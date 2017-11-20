@@ -4,7 +4,7 @@ TAG = latest
 
 NAME = $(REGISTRY)/$(IMAGE):$(TAG)
 
-pwd =  $(shell pwd)
+pwd =  $(shell pwd -P)
 
 .PHONY: default
 default: build
