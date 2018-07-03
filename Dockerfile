@@ -17,6 +17,9 @@ RUN pip install httpie
 
 RUN apk --update add php7 \
                      php7-json
+
+RUN apk --update add git
+
 RUN mkdir -p /ansible/playbooks
 
 WORKDIR /ansible/playbooks
