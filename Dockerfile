@@ -2,13 +2,18 @@ FROM williamyeh/ansible:alpine3
 
 MAINTAINER zoltan@mullner.hu
 
-RUN apk --update add bash \
-                     py-dnspython \
+#RUN pip install --upgrade ansible
+
+RUN apk --update add bash
+
+RUN apk --update add py-dnspython \
                      py-boto \
                      py-netaddr \
-                     bind-tools \
-                     html2text && \
-    pip install httpie
+                     bind-tools
+                     
+RUN apk --update add html2text
+
+RUN pip install httpie
 
 RUN mkdir -p /ansible/playbooks
 
