@@ -26,6 +26,5 @@ WORKDIR /ansible/playbooks
 
 VOLUME [ "/ansible/playbooks" ]
 
-ENTRYPOINT [ "ansible-playbook" ]
-
-CMD [ "--version" ]
+# default command: display Ansible version
+CMD [ "ansible-playbook", "--version" ]
