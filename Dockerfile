@@ -15,6 +15,8 @@ RUN apk --update add html2text
 
 RUN pip install httpie
 
+RUN apk --update add php7 \
+                     php7-json
 RUN mkdir -p /ansible/playbooks
 
 WORKDIR /ansible/playbooks
