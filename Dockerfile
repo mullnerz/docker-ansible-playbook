@@ -22,6 +22,8 @@ RUN apk --update add git
 
 RUN apk --update add jq
 
+RUN apk --update add curl
+
 RUN mkdir -p /ansible/playbooks
 
 WORKDIR /ansible/playbooks
