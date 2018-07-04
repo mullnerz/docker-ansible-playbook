@@ -20,6 +20,8 @@ RUN apk --update add php7 \
 
 RUN apk --update add git
 
+RUN apk --update add jq
+
 RUN mkdir -p /ansible/playbooks
 
 WORKDIR /ansible/playbooks
