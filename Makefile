@@ -21,7 +21,6 @@ rebuild:
 push:
 	docker push $(NAME)
 
-
 debug:
 	docker run --rm -it -v $(pwd):/ansible/playbooks --entrypoint=/bin/bash $(NAME)
 
