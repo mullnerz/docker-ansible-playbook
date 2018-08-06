@@ -1,28 +1,65 @@
-FROM williamyeh/ansible:alpine3
+#FROM williamyeh/ansible:alpine3
+FROM alpine:3.6
 
 MAINTAINER zoltan@mullner.hu
 
-#RUN pip install --upgrade ansible
+RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
+    apk --update add sudo                                         && \
+    \
+    \
+    echo "===> Adding Python runtime..."  && \
+    apk --update add python py-pip openssl ca-certificates    && \
+    apk --update add --virtual build-dependencies \
+                python-dev libffi-dev openssl-dev build-base  && \
+    pip install --upgrade pip cffi                            && \
+    \
+    \
+    echo "===> Installing Ansible..."  && \
+    pip install ansible                && \
+    \
+    \
+    echo "===> Installing handy tools (not absolutely required)..."  && \
+    pip install --upgrade pywinrm                  && \
+    apk --update add sshpass openssh-client rsync  && \
+    \
+    \
+    echo "===> Removing package list..."  && \
+    apk del build-dependencies            && \
+    rm -rf /var/cache/apk/*               && \
+    \
+    \
+    echo "===> Adding hosts for convenience..."  && \
+    mkdir -p /etc/ansible                        && \
+    echo 'localhost' > /etc/ansible/hosts
 
-RUN apk --update add bash
+## Upgrade ansible 
+#RUN echo "===> Adding Python runtime..." && \
+#    apk --update add python py-pip openssl ca-certificates && \
+#    apk --update add --virtual build-dependencies \ 
+#        python-dev libffi-dev openssl-dev build-base && \
+#    pip install --no-cache-dir --upgrade pip cffi && \
+#    \
+#    echo "===> Installing Ansible..." && \
+#    pip install --no-cache-dir --upgrade ansible && \
+#    \
+#    echo "===> Removing package list..." && \ 
+#    apk del build-dependencies && \ 
+#    rm -rf /var/cache/apk/*
 
-RUN apk --update add py-dnspython \
-                     py-boto \
-                     py-netaddr \
-                     bind-tools
-                     
-RUN apk --update add html2text
+RUN apk --no-cache --update add \
+        bash \
+        py-dnspython \
+        py-boto \
+        py-netaddr \
+        bind-tools \
+        html2text \
+        php7 \
+        php7-json \
+        git \
+        jq \
+        curl
 
-RUN pip install httpie
-
-RUN apk --update add php7 \
-                     php7-json
-
-RUN apk --update add git
-
-RUN apk --update add jq
-
-RUN apk --update add curl
+RUN pip install --no-cache-dir --upgrade mitogen
 
 RUN mkdir -p /ansible/playbooks
 
