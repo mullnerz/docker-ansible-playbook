@@ -17,7 +17,7 @@ How to use it
     
     
     # Run basic test with mounted volume and syntax-check parameter
-    $ docker run --rm -it -v $(pwd):/ansible/playbooks mullnerz/ansible-playbook --syntax-check site.yml
+    $ docker run --rm -it -v $(pwd):/ansible/playbooks mullnerz/ansible-playbook ansible-playbook --syntax-check site.yml
     
     playbook: site.yml
 ```
