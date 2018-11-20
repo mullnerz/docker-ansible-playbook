@@ -44,6 +44,8 @@ RUN apk --no-cache --update add \
         jq \
         curl
 
+RUN pip install --no-cache-dir --upgrade yq
+
 RUN pip install --no-cache-dir --upgrade mitogen
 
 RUN mkdir -p /ansible/playbooks
