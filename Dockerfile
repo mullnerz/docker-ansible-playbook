@@ -7,18 +7,18 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     \
     \
     echo "===> Adding Python runtime..."  && \
-    apk --update add python py-pip openssl ca-certificates    && \
+    apk --update add python3 openssl ca-certificates    && \
     apk --update add --virtual build-dependencies \
-                python-dev libffi-dev openssl-dev build-base  && \
-    pip install --upgrade pip cffi                            && \
+                python3-dev libffi-dev openssl-dev build-base  && \
+    pip3 install --upgrade pip cffi                            && \
     \
     \
     echo "===> Installing Ansible..."  && \
-    pip install ansible==2.7.9         && \
+    pip3 install ansible==2.7.9         && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
-    pip install --upgrade pywinrm                  && \
+    pip3 install --upgrade pywinrm                  && \
     apk --update add sshpass openssh-client rsync  && \
     \
     \
@@ -44,9 +44,9 @@ RUN apk --no-cache --update add \
         jq \
         curl
 
-RUN pip install --no-cache-dir --upgrade yq
+RUN pip3 install --no-cache-dir --upgrade yq
 
-RUN pip install --no-cache-dir --upgrade mitogen
+RUN pip3 install --no-cache-dir --upgrade mitogen
 
 RUN mkdir -p /ansible/playbooks
 
