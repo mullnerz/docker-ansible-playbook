@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10
 
 MAINTAINER zoltan@mullner.hu
 
@@ -14,7 +14,7 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     \
     \
     echo "===> Installing Ansible..."  && \
-    pip3 install ansible==2.7.9         && \
+    pip3 install ansible==2.9.1         && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
