@@ -1,6 +1,6 @@
-FROM alpine:3.10
+FROM alpine:3.11
 
-MAINTAINER zoltan@mullner.hu
+LABEL maintainer="zoltan@mullner.hu"
 
 RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     apk --update add sudo                                         && \
@@ -14,7 +14,7 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     \
     \
     echo "===> Installing Ansible..."  && \
-    pip3 install ansible==2.9.1         && \
+    pip3 install ansible==2.9.6         && \
     \
     \
     echo "===> Installing handy tools (not absolutely required)..."  && \
