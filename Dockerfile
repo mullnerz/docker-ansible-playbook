@@ -1,6 +1,6 @@
 FROM alpine:3.11
 
-MAINTAINER zoltan@mullner.hu
+LABEL maintainer="zoltan@mullner.hu"
 
 RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     apk --update add sudo                                         && \
